@@ -1,0 +1,25 @@
+<div id="sort">
+    <div id="sort_line"></div>
+    <div id="area" data-bind="with:defaultDestination"><span class="up" data-bind="click:$root.area,text:name">加载中...</span></div><div id="category" data-bind="with:defaultCategory"><span class="up" data-bind="click:$root.category,text:name">加载中...</span></div>
+</div>
+<div id="area_content">
+    <div style="position: absolute; width:100%;">
+        <ul id="area_content_nav">
+            <li class="sortSelect" data-bind="event:{tap:$root.navAll}">全球</li>
+            <!-- ko foreach:areaSelectList -->
+            <li data-bind="text:name,event:{tap:$root.navClick}"></li>
+            <!-- /ko -->
+        </ul>
+        <ul id="area_content_ul" data-bind="foreach:areaList">
+            <li data-bind="css:{other : $data.children.length>0},text:name,event:{tap:$root.areaClick}"></li>
+        </ul>
+    </div>
+</div>
+<div id="category_content">
+    <div style="position: absolute; width:100%;">
+        <ul id="category_content_ul" data-bind="foreach:categoryList">
+            <li data-bind="css:{other : $data.children.length>0},text:name,event:{tap:$root.categoryClick}"></li>
+        </ul>
+    </div>
+</div>
+<div id="sort_back" data-bind="click:hide_area_category_content"></div>

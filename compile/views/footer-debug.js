@@ -1,0 +1,1 @@
+define("views/footer-debug",["ko-debug","View-debug","/src/templates/footer-debug.html"],function(i){i("ko-debug");var e=i("View-debug"),t=new e({id:"view_footer",html:i("/src/templates/footer-debug.html"),afterRender:function(){t.bindViewModel(n)}}),n=t.viewModel={};return t});

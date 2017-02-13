@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="keywords" content="旅鸟,mxlvniao,旅鸟地图,美行旅鸟地图,出境游,自由行,日本中文地图,韩国中文地图,离线地图,美行科技,旅鸟日本地图,旅鸟韩国地图,美行旅鸟">
+    <meta name="description" content="旅鸟地图专注于境外自由行，基于自主研发的全球中文地图引擎技术，为您提供精准的境外吃喝游玩购一站式服务。不再担心迷路问题，让自由行更自由。沈阳美行科技有限公司出品。">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <script type="text/javascript" src="src/js/lib/sea.js"></script>
+    <script type="text/javascript" src="src/js/config.js"></script>
+    <script type="text/javascript" src='/src/js/lib/playview.js'></script>
+    <link href="src/stylesheets/min.css" type="text/css" rel="stylesheet" />
+    <title>【旅鸟官网】日本中文地图 韩国中文地图 全球中文旅游地图</title>
+</head>
+<body>
+<div id="loading">
+    <img id="loadingImg-1" src="src/images/loading-1.png" width="58px;" />
+    <img style="display: none" id="loadingImg-2" src="src/images/loading-2.png" width="58px;" />
+    <img style="display: none" id="loadingImg-3" src="src/images/loading-3.png" width="58px;" />
+    <img style="display: none" id="loadingImg-4" src="src/images/loading-4.png" width="58px;" />
+    <br /><span>努力加载中...</span>
+    <script type="text/javascript">
+        var dom1 = document.getElementById("loadingImg-1");
+        var dom2 = document.getElementById("loadingImg-2");
+        var dom3 = document.getElementById("loadingImg-3");
+        var dom4 = document.getElementById("loadingImg-4");
+        var arr = [];
+        arr.push(dom1)
+        arr.push(dom2)
+        arr.push(dom3)
+        arr.push(dom4)
+        var i=0;
+        window.loadingImg = setInterval(function(){
+            arr[i].style.display = "none";
+            i++;
+            if(i>3){
+                i=0;
+            }
+            arr[i].style.display = "block";
+
+
+        },300)
+    </script>
+</div>
+<script type="text/javascript">
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    seajs.use("views/router");
+</script>
+</body>
+</html>

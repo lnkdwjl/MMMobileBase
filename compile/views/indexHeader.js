@@ -1,0 +1,1 @@
+define("views/indexHeader",["ko","View","/src/templates/indexHeader.html"],function(e){e("ko");var i=e("View"),t=new i({id:"view_indexHeader",isFirst:!0,html:e("/src/templates/indexHeader.html"),afterRender:function(){this.isFirst&&(t.bindViewModel(n),this.isFirst=!1)}}),n=t.viewModel={goToBack:function(){var e=mx_application.body.getViewById("view_main");e.goBack()}};return t});
