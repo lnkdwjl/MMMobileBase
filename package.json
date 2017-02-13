@@ -1,6 +1,6 @@
 {
-"name": "mxlvniaoMobile",
-"family": "http://m.mxlvniao.com",
+"name": "MMMobileBase",
+"family": "https://github.com/lnkdwjl/MMMobileBase.git",
 "version": "1.0.0",
 "devDependencies": {
 "grunt": "0.4.1",
