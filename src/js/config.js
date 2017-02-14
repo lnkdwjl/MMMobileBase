@@ -1,6 +1,6 @@
 (function () {
-    var basepath = "/compile";
-    //var basepath = "/src";
+    //var basepath = "/compile";
+    var basepath = "/src";
     var config = {
         base: basepath,
         v: "R",
