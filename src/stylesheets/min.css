@@ -1,6 +1,6 @@
 @charset "utf-8";
 *{  -webkit-box-sizing: border-box; -moz-box-sizing: border-box;  box-sizing: border-box;}
-html,body,div,form,table,td,ul,li,ol,dl,dt,dd,p,span,h1,h2,h3,h4,h5,h6,fieldset,input,textarea,th,a{margin:0;padding:0;word-break:break-all;list-style:none; font-size: 15px; font-family:"微软雅黑";}
+html,body,div,form,table,td,ul,li,ol,dl,dt,dd,p,span,h1,h2,h3,h4,h5,h6,fieldset,input,textarea,th,a{margin:0;padding:0;word-break:break-all;list-style:none; font-size: 15px; font-family:"微软雅黑"; font-weight: normal;}
 article,aside,dialog,footer,header,section,footer,nav,figure,menu{display:block;}
 span, label, font{cursor:default;}
 img{border:0px;}
@@ -21,10 +21,11 @@ html {-ms-touch-action: none;}
 
 /*index*/
 #indexContent{padding: 0px 10px 0px 10px;}
-.indexContent_list_content{display: inline-block;width:100%; height:70px; border-top:1px solid #E5E5E5;}
+.indexContent_list_content{display: inline-block;width:100%; border-top:1px solid #E5E5E5; padding: 10px 0px 10px 0px;}
 .indexContent_list li:first-child{border:0px;}
 .indexContent_list_content div{display: inline-block;}
-
+.indexContent_list_content_left{width:25%;background-size: cover; overflow: hidden;}
+.indexContent_list_content_right{width:75%; overflow: hidden; padding-left: 10px;}
 
 
 /*footer*/
