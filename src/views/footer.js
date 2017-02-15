@@ -8,9 +8,13 @@ define(function(require) {
     var view_footer = new View({
         id : "view_footer",
         html : require("/src/templates/footer.html"),
+        isFirst:true,
         afterRender : function() {
-            view_footer.bindViewModel(viewModel);
-            viewModel.currentDom = $(".homeSelect")[0];
+            if(this.isFirst) {
+                view_footer.bindViewModel(viewModel);
+                viewModel.currentDom = $(".homeSelect")[0];
+                this.isFirst = false;
+            }
         }
     });
     var viewModel = view_footer.viewModel = {

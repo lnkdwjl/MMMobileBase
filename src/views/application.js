@@ -8,7 +8,8 @@ define(function(require) {
     var iScroll = require("iScroll");
     var $ = require("$");
     var application = window.MM_application || new Application({});
-    var footer = require("views/footer");
+    var viewFooter = require("views/footer");
+    var viewHeader = require("views/header");
     window.MM_application = application;
     //访问过的view缓存
     MM_application.views=[];
@@ -56,7 +57,8 @@ define(function(require) {
     view_main.append(view_main_hearder);
     view_main.append(view_main_content);
     view_main.append(view_main_footer);
-    view_main_footer.append(footer);
+    view_main_footer.append(viewFooter);
+    view_main_hearder.append(viewHeader);
     //带参数的刷新
     var view,path;
     if(window.getQueryString("view")&&window.getQueryString("path")){
