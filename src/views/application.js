@@ -18,22 +18,12 @@ define(function(require) {
     var bindPopState = function(event){
         var state = event.state || null;
         if(!state)location.href = "/";
-    	if(MM_application.views&&MM_application.views[state.view]){
+        require.async("views/"+state.path,function(appendView){
             //删除页面元素
-            var view_main = MM_application.body.getViewById("view_main");
-            view_main.views.views[0].removeAll();
-            var appendView = MM_application.views[state.view];
-            appendView.appendView();
-            view_main.append(appendView);
-        }else{
-            require.async("views/"+state.path,function(appendView){
-                //删除页面元素
-                var view_main = MM_application.body.getViewById("view_main");
-                view_main.views.views[0].removeAll();
-                appendView.appendView();
-                view_main.append(appendView);
-            })
-        }
+            var contentView = MM_application.body.getViewById("view_main_content");
+            contentView.views.views[0].removeAll();
+            contentView.append(appendView);
+        })
     }
 
     var view_main = new View({
@@ -70,14 +60,8 @@ define(function(require) {
                 path :path
             };
             //history.pushState(state,null,null);
-            appendView.appendView();
-            if(window.getQueryString("data")){
-                var data = JSON.parse(base64.decode(window.getQueryString("data")));
-                appendView.imgInfo = data;
-            }
-            view_main.append(appendView);
+            view_main_content.append(appendView);
             MM_application.body.append(view_main);
-            MM_application.body.append(view_loading);
             setTimeout(function(){
                 //后退
                 window.addEventListener("popstate",bindPopState);

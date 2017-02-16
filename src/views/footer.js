@@ -12,28 +12,83 @@ define(function(require) {
         afterRender : function() {
             if(this.isFirst) {
                 view_footer.bindViewModel(viewModel);
-                viewModel.currentDom = $(".homeSelect")[0];
                 this.isFirst = false;
             }
+            viewModel.currentDom = viewModel.refreshStatus();
         }
     });
     var viewModel = view_footer.viewModel = {
+        refreshStatus:function(){
+            var path = window.getQueryString("path");
+            if(!path){path="index"}
+            var map = {
+                index:"home",
+                alarm:"alarm",
+                order:"order",
+                user:"user"
+            };
+            var dom = $("."+map[path])[0];
+            var className = $(dom).attr("class")+"Select";
+            $(dom).removeClass();
+            $(dom).addClass(className);
+            return dom;
+        },
         currentDom:null,
         homeClick:function(data,event){
             event.stopPropagation();
             viewModel.addClass(event);
+            require.async("views/index",function(view_index_min){
+                var contentView = window.MM_application.body.getViewById("view_main_content");
+                contentView.views.views[0].removeAll();
+                contentView.append(view_index_min);
+                var state = {
+                    view : "view_index_min",
+                    path :"index"
+                };
+                history.pushState(state,null,"/");
+            });
         },
         alarmClick:function(data,event){
             event.stopPropagation();
             viewModel.addClass(event);
+            require.async("views/alarm",function(view_alarm_min){
+                var contentView = window.MM_application.body.getViewById("view_main_content");
+                contentView.views.views[0].removeAll();
+                contentView.append(view_alarm_min);
+                var state = {
+                    view : "view_alarm_min",
+                    path :"alarm"
+                };
+                history.pushState(state,null,"?path=alarm&view=view_alarm_min");
+            });
         },
         orderClick:function(data,event){
             event.stopPropagation();
             viewModel.addClass(event);
+            require.async("views/order",function(view_order_min){
+                var contentView = window.MM_application.body.getViewById("view_main_content");
+                contentView.views.views[0].removeAll();
+                contentView.append(view_order_min);
+                var state = {
+                    view : "view_order_min",
+                    path :"order"
+                };
+                history.pushState(state,null,"?path=order&view=view_order_min");
+            });
         },
         userClick:function(data,event){
             event.stopPropagation();
             viewModel.addClass(event);
+            require.async("views/user",function(view_user_min){
+                var contentView = window.MM_application.body.getViewById("view_main_content");
+                contentView.views.views[0].removeAll();
+                contentView.append(view_user_min);
+                var state = {
+                    view : "view_user_min",
+                    path :"user"
+                };
+                history.pushState(state,null,"?path=user&view=view_user_min");
+            });
         },
         refreshAllClass:function(dom){
             if(viewModel.currentDom!==dom){
@@ -44,11 +99,14 @@ define(function(require) {
         },
         addClass:function(event){
             var dom = event.currentTarget;
-            viewModel.refreshAllClass(dom);
-            var className = $(dom).attr("class")+"Select";
-            $(dom).removeClass();
-            $(dom).addClass(className);
-            viewModel.currentDom = dom;
+            if(dom!==viewModel.currentDom){
+                viewModel.refreshAllClass(dom);
+                var className = $(dom).attr("class")+"Select";
+                $(dom).removeClass();
+                $(dom).addClass(className);
+                viewModel.currentDom = dom;
+            }
+            return;
         }
     }
 

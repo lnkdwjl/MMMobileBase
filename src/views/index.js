@@ -46,12 +46,13 @@ define(function(require,exports,module){
                 this.iScroll.scrollTo(0,0);
             }
         },
-        iScroll:null,
-        appendView:function(){
-        }
+        iScroll:null
     });
+    //ko.applyBindings({})
+    //ko.observable("")
+    //ko.observableArray([])
     var viewModel = view_index_min.viewModel = {
-        list:[
+        list:ko.observableArray([
             {
                 imgsrc : "url(src/images/system/noimg.png)",
                 name:'日本中小学课改方案称钓鱼岛为"日本固有领土"',
@@ -118,7 +119,7 @@ define(function(require,exports,module){
                 tag:"娱乐",
                 time:"2017-02-15"
             }
-        ]
+        ])
     }
 
     return view_index_min;
