@@ -6,7 +6,7 @@ define(function(require,exports,module){
     var $ = require('$');
     var ko = require('ko');
     var iScroll = require('iScroll');
-
+    var ViewModel = require('ViewModel');
     var view_alarm_min = new View({
         id:"view_alarm_min",
         html:require("/src/templates/alarm.html"),
@@ -42,9 +42,9 @@ define(function(require,exports,module){
     //ko.applyBindings({})
     //ko.observable("")
     //ko.observableArray([])
-    var viewModel = view_alarm_min.viewModel = {
+    var viewModel = view_alarm_min.viewModel = new ViewModel({
         name:ko.observable("预定页")
-    }
+    });
 
     return view_alarm_min;
 })

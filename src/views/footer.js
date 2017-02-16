@@ -4,6 +4,7 @@
 define(function(require) {
     var ko = require("ko");
     var View = require('View');
+    var ViewModel = require('ViewModel');
     var $ = require("$");
     var view_footer = new View({
         id : "view_footer",
@@ -17,7 +18,7 @@ define(function(require) {
             viewModel.addClass(viewModel.refreshDom());
         }
     });
-    var viewModel = view_footer.viewModel = {
+    var viewModel = view_footer.viewModel = new ViewModel({
         refreshDom:function(){
             var path = window.getQueryString("path");
             if(!path){path="index"}
@@ -103,7 +104,7 @@ define(function(require) {
             }
             return;
         }
-    }
+    });
 
     return view_footer;
 });

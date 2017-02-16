@@ -6,6 +6,8 @@ define(function(require,exports,module){
     var ko = require("ko");
     var view = require('View');
     var iScroll = require("iScroll");
+    var Message = require("Message");
+    var ViewModel = require('ViewModel');
 
     var view_index_min = new view({
         id : "view_index_min",
@@ -23,6 +25,8 @@ define(function(require,exports,module){
             $(".indexContent_list_content_right").height(height);
             $(".indexContent_list_content").height(height);
             if(this.isFirst) {
+
+                Message.alert("aaaa","bbbb");
                 view_index_min.bindViewModel(viewModel);
                 var myScroll = new iScroll('#view_index_min', {
                     scrollY: true,
@@ -51,7 +55,7 @@ define(function(require,exports,module){
     //ko.applyBindings({})
     //ko.observable("")
     //ko.observableArray([])
-    var viewModel = view_index_min.viewModel = {
+    var viewModel = view_index_min.viewModel = new ViewModel({
         list:ko.observableArray([
             {
                 imgsrc : "url(src/images/system/noimg.png)",
@@ -120,7 +124,7 @@ define(function(require,exports,module){
                 time:"2017-02-15"
             }
         ])
-    }
+    });
 
     return view_index_min;
 })

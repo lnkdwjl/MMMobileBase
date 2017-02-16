@@ -4,6 +4,7 @@
 define(function(require) {
     var ko = require("ko");
     var View = require('View');
+    var ViewModel = require('ViewModel');
     var view_header = new View({
         id : "view_header",
         html : require("/src/templates/header.html"),
@@ -15,9 +16,9 @@ define(function(require) {
             }
         }
     });
-    var viewModel = view_header.viewModel = {
-        title : ko.observable(""),
-    }
+    var viewModel = view_header.viewModel = new ViewModel({
+        title : ko.observable("")
+    });
 
     return view_header;
 });

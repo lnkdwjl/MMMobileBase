@@ -3,6 +3,7 @@
  */
 define(function(require,exports,module){
     var View = require('View');
+    var ViewModel = require('ViewModel');
     var ko = require('ko');
     var $ = require('$');
     var iScroll = require("iScroll");
@@ -40,8 +41,8 @@ define(function(require,exports,module){
     //ko.applyBindings({})
     //ko.observable("")
     //ko.observableArray([])
-    var viewModel = view_order_min.viewModel = {
+    var viewModel = view_order_min.viewModel = new ViewModel({
         name:ko.observable("订单页")
-    };
+    });
     return view_order_min;
 });

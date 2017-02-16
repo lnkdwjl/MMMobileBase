@@ -6,6 +6,7 @@ define(function(require,exports,module){
     var $ = require('$')
     var ko = require('ko');
     var iScroll = require('iScroll');
+    var ViewModel = require('ViewModel');
     var view_user_min = new View({
         id:"view_user_min",
         html:require("/src/templates/user.html"),
@@ -40,8 +41,8 @@ define(function(require,exports,module){
     //ko.applyBindings({})
     //ko.observable("")
     //ko.observableArray([])
-    var viewModel = view_user_min.viewModel = {
+    var viewModel = view_user_min.viewModel = new ViewModel({
         name:ko.observable("个人中心页面")
-    }
+    });
     return view_user_min;
 });
