@@ -22,8 +22,8 @@ define(function(require,exports,module){
             $(".indexContent_list_content_left").height(height);
             $(".indexContent_list_content_right").height(height);
             $(".indexContent_list_content").height(height);
-            view_index_min.bindViewModel(viewModel);
             if(this.isFirst) {
+                view_index_min.bindViewModel(viewModel);
                 var myScroll = new iScroll('#view_index_min', {
                     scrollY: true,
                     scrollX: false,

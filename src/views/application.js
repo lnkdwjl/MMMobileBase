@@ -19,6 +19,9 @@ define(function(require) {
         var state = event.state || null;
         if(!state)location.href = "/";
         require.async("views/"+state.path,function(appendView){
+            //获取底部的导航更新状态
+            var footerView = MM_application.body.getViewById("view_footer");
+            footerView.viewModel.addClass(footerView.viewModel.refreshDom());
             //删除页面元素
             var contentView = MM_application.body.getViewById("view_main_content");
             contentView.views.views[0].removeAll();
@@ -55,11 +58,6 @@ define(function(require) {
         view = window.getQueryString("view");
         path = window.getQueryString("path");
         require.async("views/"+path,function(appendView){
-            var state = {
-                view : view,
-                path :path
-            };
-            //history.pushState(state,null,null);
             view_main_content.append(appendView);
             MM_application.body.append(view_main);
             setTimeout(function(){

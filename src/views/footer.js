@@ -14,11 +14,11 @@ define(function(require) {
                 view_footer.bindViewModel(viewModel);
                 this.isFirst = false;
             }
-            viewModel.currentDom = viewModel.refreshStatus();
+            viewModel.addClass(viewModel.refreshDom());
         }
     });
     var viewModel = view_footer.viewModel = {
-        refreshStatus:function(){
+        refreshDom:function(){
             var path = window.getQueryString("path");
             if(!path){path="index"}
             var map = {
@@ -27,16 +27,12 @@ define(function(require) {
                 order:"order",
                 user:"user"
             };
-            var dom = $("."+map[path])[0];
-            var className = $(dom).attr("class")+"Select";
-            $(dom).removeClass();
-            $(dom).addClass(className);
-            return dom;
+            return $("."+map[path])[0];
         },
         currentDom:null,
         homeClick:function(data,event){
             event.stopPropagation();
-            viewModel.addClass(event);
+            viewModel.addClass(event.currentTarget);
             require.async("views/index",function(view_index_min){
                 var contentView = window.MM_application.body.getViewById("view_main_content");
                 contentView.views.views[0].removeAll();
@@ -50,7 +46,7 @@ define(function(require) {
         },
         alarmClick:function(data,event){
             event.stopPropagation();
-            viewModel.addClass(event);
+            viewModel.addClass(event.currentTarget);
             require.async("views/alarm",function(view_alarm_min){
                 var contentView = window.MM_application.body.getViewById("view_main_content");
                 contentView.views.views[0].removeAll();
@@ -64,7 +60,7 @@ define(function(require) {
         },
         orderClick:function(data,event){
             event.stopPropagation();
-            viewModel.addClass(event);
+            viewModel.addClass(event.currentTarget);
             require.async("views/order",function(view_order_min){
                 var contentView = window.MM_application.body.getViewById("view_main_content");
                 contentView.views.views[0].removeAll();
@@ -78,7 +74,7 @@ define(function(require) {
         },
         userClick:function(data,event){
             event.stopPropagation();
-            viewModel.addClass(event);
+            viewModel.addClass(event.currentTarget);
             require.async("views/user",function(view_user_min){
                 var contentView = window.MM_application.body.getViewById("view_main_content");
                 contentView.views.views[0].removeAll();
@@ -91,14 +87,13 @@ define(function(require) {
             });
         },
         refreshAllClass:function(dom){
-            if(viewModel.currentDom!==dom){
+            if(viewModel.currentDom&&viewModel.currentDom!==dom){
                 var className = $(viewModel.currentDom).attr("class").replace("Select","");
                 $(viewModel.currentDom).removeClass();
                 $(viewModel.currentDom).addClass(className);
             }
         },
-        addClass:function(event){
-            var dom = event.currentTarget;
+        addClass:function(dom){
             if(dom!==viewModel.currentDom){
                 viewModel.refreshAllClass(dom);
                 var className = $(dom).attr("class")+"Select";
